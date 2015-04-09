@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -13,10 +12,7 @@ import java.util.List;
 
 public class MyActivity extends Activity {
 
-    private ListView listView;
-
     private int count;
-
     private MyAdapter adapter;
 
     @Override
@@ -30,10 +26,9 @@ public class MyActivity extends Activity {
             @Override
             public void onClick(View v) {
                 for (int i = 0; i < 10; i++) {
-                    myList.add("TEST" + count);
+                    adapter.add("TEST" + count);
                     count++;
                 }
-                adapter.notifyDataSetChanged();
             }
         });
 
@@ -43,7 +38,7 @@ public class MyActivity extends Activity {
             count++;
         }
 
-        listView = (ListView) findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.listView);
 
         adapter = new MyAdapter(this, myList);
 

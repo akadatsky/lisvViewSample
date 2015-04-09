@@ -22,13 +22,11 @@ public class MyAdapter extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.list_item, parent, false);
-            TextView text = (TextView) convertView.findViewById(R.id.text);
-            convertView.setTag(text);
         }
 
         String item = getItem(position);
 
-        TextView text = (TextView) convertView.getTag();
+        TextView text = (TextView) convertView.findViewById(R.id.text);
         text.setText(item);
 
         return convertView;
